@@ -1,0 +1,26 @@
+.progress
+{
+height: .3rem!important;
+}
+.container
+{
+    font-family: sans-serif !important;
+    
+}
+.addRequest{
+    font-size: 14px;
+}
+.btn-secondary
+{
+    background-color: "#E6E8EA"!important;
+}
+.field-info{
+font-size: 13px;
+color:#BBBBBB;
+}
+.tile-content
+{
+    box-shadow: 2px 2px 5px 5px #E1E1E1;
+    padding: 2em;
+    font-size: 13px;
+}
