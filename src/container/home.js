@@ -4,27 +4,45 @@ import ActionPanel from '../component/actionPanel';
 
 import '../style/home.css';
 import ContentForm from '../component/contentForm';
-const progressStepList=[{
-    name:"Select Data Ingestion",
-    isActive:true,
-    isComplete:false,
-    id:1,
-    progress:"5%"
+const progressStepList=[
+    {
+        name:"Select Usercase",
+        isActive:true,
+        isComplete:false,
+        id:1        
      },
      {
-        name:"Table Details",
+        name:"Assign Roles",
         isActive:false,
         isComplete:false,
-        id:2,
-        progress:"35%"
-         },
-         {
-            name:"Transformation Details",
-            isActive:false,
-            isComplete:false,
-            id:3,
-            progress:"100%"
-             }]
+        id:2        
+     },
+    {
+        name:"Consumer",
+        isActive:false,
+        isComplete:false,
+        id:3        
+    },
+    {
+        name:"Modules",
+        isActive:false,
+        isComplete:false,
+        id:4
+    },
+    {
+        name:"Publisher",
+        isActive:false,
+        isComplete:false,
+        id:5
+    },
+    {
+        name:"Summary",
+        isActive:false,
+        isComplete:false,
+        id:6
+    },
+
+    ]
 class Home extends Component
 {
     constructor()
@@ -32,8 +50,8 @@ class Home extends Component
         super();
         this.state={
             stepList:progressStepList||[],
-            contentHeading:"First, Select Data Ingestion releated to your ODLS",
-            contentSubHeading:"In this step, you will select Data Ingestion associated with your ODL",
+            contentHeading:"",
+            contentSubHeading:"",
             formType:"ingestion",
             requestIds:[""],
             currentStep:1
@@ -66,26 +84,22 @@ class Home extends Component
  }
  handleNextClick()
  {
-     if(this.state.requestIds.length>0 && this.state.requestIds.filter((data)=>{return data===""||data===undefined||data===null;}).length===0)
-     {
+    
         let _stepList=this.state.stepList;
         _stepList.map((data)=>{
-            if(data.id===this.state.currentStep)
-            {
-                data.isComplete=true;
-            }
+            
             if(data.id===this.state.currentStep+1)
             {
                 data.isActive=true;
+            }
+            else{
+                data.isActive=false;
             }
 
         });
         if(this.state.currentStep===1)
         {
          this.setState({
-
-            contentHeading:"Table Details",
-            contentSubHeading:"In this step, Please provide details of ODL and select partners you're working with",
             formType:"table",
             stepList:_stepList,
             currentStep:this.state.currentStep+1 
@@ -102,13 +116,6 @@ class Home extends Component
                 currentStep:this.state.currentStep+1 
              });
         }
-        }
-         else {
-            alert("Please provide Request ID.");
-         }
-        
-     
-
  }
  resetStep(type)
  {
@@ -140,9 +147,7 @@ class Home extends Component
  {
     this.resetStep();
      this.setState({
-        stepList:progressStepList||[],
-        contentHeading:"First, Select Data Ingestion releated to your ODLS",
-        contentSubHeading:"In this step, you will select Data Ingestion associated with your ODL",
+        stepList:progressStepList||[],        
         formType:"ingestion",
         requestIds:[""],
         currentStep:1
@@ -153,9 +158,7 @@ class Home extends Component
         return <div className=' container mt-5'>
         <div className="row">
             <ProgressBar progressStepList={this.state.stepList}></ProgressBar>
-            <ContentForm
-            heading={this.state.contentHeading}
-            subheading={this.state.contentSubHeading}
+            <ContentForm            
             type={this.state.formType}
             requestId={this.state.requestIds}
             handleAddRequestId={this.handleAddRequestId.bind(this)}

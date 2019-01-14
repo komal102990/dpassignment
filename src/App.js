@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import Home from './container/home';
 import { library } from '@fortawesome/fontawesome-svg-core'
 
-import { faTrash,faLightbulb } from '@fortawesome/free-solid-svg-icons'
+import { faTrash,faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faTrash,faLightbulb)
+library.add(faTrash,faInfoCircle)
 class App extends Component {
   render() {
     return (

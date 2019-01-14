@@ -18,9 +18,7 @@ class ContentForm extends Component
 
     render()
     {
-        return <div className="col-md-12 mt-4">
-            <span className="row mt-4" style={{fontSize:"27px"}}>{this.props.heading}</span>
-            <span className="row">{this.props.subheading}</span>
+        return <div className="col-md-12 ">            
             <div className="row mt-4 mb-5">
             <div className="col-md-6">
             {this.renderForm(this.props.currentStep)}
@@ -28,18 +26,19 @@ class ContentForm extends Component
             <div className="col-md-5 ml-4">
             {this.props.type==="ingestion"?
             <DescriptionTile
-            heading="What is Data Ingestion?"
-            description="Ingestion start by securing approval from the datagovernance team, for a particular SOR data source.
-            Such data source can be a mainframe file, a relational table, a JSON or XML file etc. Each data source might contain one or multiple feeds.
-            A feed is a structured dataset comprised of rows and columns. Each feed will parse/map into a HIVE table
-            on a temp area prior to ingestion"
+            heading="Enter Use Case Name"
+            description="Enter the name of your Use Case, as it appears in CDM"            
+            descriptionType="p"
             ></DescriptionTile>:
             this.props.type==="table"?
             <DescriptionTile
-            heading="What is ODL and ODL category?"
-            description="ODL (Organized Derived Layers): The derivations are done at a Bussiness Unit or a Domain (Account Level, Application Level)
-            or the derivations are done on top of CS 3.0 tables to make the data easily available for other use case.
-            Ex. risk_new_account"
+            heading="Add appropriate Role Assignments"
+            description={[
+             {   heading:"test",
+                description:"test"
+            }
+            ]}
+            descriptionType="ul"
             ></DescriptionTile>:""}
             </div>
             </div>
@@ -70,24 +69,26 @@ class ContentForm extends Component
       return this.props.requestId.map((data,index)=>{
         return <div className="row mt-2" key={index}>
         <div className="col-md-12 pl-0">
-        <span className="col-md-12 pl-0">Request ID <span style={{color:"red"}}>*</span></span>
+        <span className="col-md-12 pl-0 lableStyle">Use Case Name<FontAwesomeIcon icon="info-circle" color="#403C38"/></span>
         <div className="col-md-12 pl-0"> 
         <div className="row pl-3">
-        <input className="form-control col-md-7" placeholder="Request ID" value={data}
+        <select className="form-control col-md-11 mt-2" placeholder="Request ID" value={data}
         onChange={(e)=>{this.props.handleRequestIdChange(e.target.value,index)}}
-        />
-        { this.props.requestId.length>1 && index>0?
+        >
+        <option></option>
+        </select>
+        {/* { this.props.requestId.length>1 && index>0?
       <FontAwesomeIcon icon="trash" size="1x" className="ml-2 mt-2"
       onClick={()=>{this.props.deleteRequest(index)}}
       ></FontAwesomeIcon>:""
-       }
+       } */}
         </div>
         </div>
         </div>
-        { this.props.requestId.length-1===index?
+        {/* { this.props.requestId.length-1===index?
         <span className="col-md-12 mt-2 addRequest"
          onClick={this.props.handleAddRequestId.bind(this)}
-        >+ Add Request ID</span>:"" }
+        >+ Add Request ID</span>:"" } */}
         </div>;
        });
          

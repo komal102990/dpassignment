@@ -12,7 +12,11 @@ height: .3rem!important;
 }
 .btn-secondary
 {
-    background-color: "#E6E8EA"!important;
+    background-color: #ffffff !important;
+    border: 1px solid #3277B8 !important;
+    color: #3277B8 !important;
+    padding: 5px 27px 5px 27px!important;
+    font-size: 13px!important;
 }
 .field-info{
 font-size: 13px;
@@ -20,7 +24,30 @@ color:#BBBBBB;
 }
 .tile-content
 {
-    box-shadow: 2px 2px 5px 5px #E1E1E1;
-    padding: 2em;
+    box-shadow: 1px 4px 1px 0px #E1E1E1;
+    padding: .5em;
     font-size: 13px;
+    border: 1px solid #CFCFCF;
+    border-right: 0px;
+    border-bottom: 0px;
+}
+.infoIcon
+{
+    width: 0.8em!important;
+}
+.btn-primary
+{
+    background-color: #3277B8!important;
+    padding: 5px 27px 5px 27px!important;
+    font-size: 13px!important;
+}
+.lableStyle
+{
+    color:#403C38;
+    font-size: 14px;
+    font-weight:bold;
+
+}
+ul{
+    list-style: none;
 }
