@@ -24,13 +24,13 @@ class ContentForm extends Component
             {this.renderForm(this.props.currentStep)}
             </div>
             <div className="col-md-5 ml-4">
-            {this.props.type==="ingestion"?
+            {this.props.currentStep===1?
             <DescriptionTile
             heading="Enter Use Case Name"
             description="Enter the name of your Use Case, as it appears in CDM"            
             descriptionType="p"
             ></DescriptionTile>:
-            this.props.type==="table"?
+            this.props.currentStep===2?
             <DescriptionTile
             heading="Add appropriate Role Assignments"
             description={[

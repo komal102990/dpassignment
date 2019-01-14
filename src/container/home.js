@@ -102,7 +102,7 @@ class Home extends Component
          this.setState({
             formType:"table",
             stepList:_stepList,
-            currentStep:this.state.currentStep+1 
+            
          });
         }
         if(this.state.currentStep===2)
@@ -113,23 +113,24 @@ class Home extends Component
                 contentSubHeading:"",
                 formType:"transformation",
                 stepList:_stepList,
-                currentStep:this.state.currentStep+1 
+                
              });
         }
+        this.setState({
+            currentStep:this.state.currentStep+1
+        });
  }
  resetStep(type)
  {
      
      progressStepList.map((data,index)=>{
-         if(this.state.currentStep===index && type==="back")
+         if(this.state.currentStep-1===data.id)
          {
-             data.isActive=false;
-             data.isComplete=false;
+             data.isActive=true;             
          }
-         else if(index!==0 && type==="reset")
-         {
+         else {
             data.isActive=false;
-            data.isComplete=false;
+            
          }
      });
     
